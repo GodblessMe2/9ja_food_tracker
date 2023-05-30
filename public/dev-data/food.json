@@ -1,0 +1,592 @@
+{
+  "foods": [
+    {
+      "name": "Jollof Rice",
+      "calories": 400,
+      "fat": 12,
+      "carbohydrate": 60,
+      "protein": 8
+    },
+    {
+      "name": "Egusi Soup",
+      "calories": 350,
+      "fat": 15,
+      "carbohydrate": 10,
+      "protein": 25
+    },
+    {
+      "name": "Pounded Yam",
+      "calories": 250,
+      "fat": 2,
+      "carbohydrate": 50,
+      "protein": 5
+    },
+    {
+      "name": "Akara",
+      "calories": 150,
+      "fat": 5,
+      "carbohydrate": 20,
+      "protein": 8
+    },
+    {
+      "name": "Suya",
+      "calories": 300,
+      "fat": 18,
+      "carbohydrate": 8,
+      "protein": 30
+    },
+    {
+      "name": "Efo Riro",
+      "calories": 200,
+      "fat": 10,
+      "carbohydrate": 15,
+      "protein": 12
+    },
+    {
+      "name": "Amala",
+      "calories": 180,
+      "fat": 5,
+      "carbohydrate": 40,
+      "protein": 3
+    },
+    {
+      "name": "Ofada Rice",
+      "calories": 320,
+      "fat": 14,
+      "carbohydrate": 55,
+      "protein": 7
+    },
+    {
+      "name": "Plantain",
+      "calories": 180,
+      "fat": 1,
+      "carbohydrate": 48,
+      "protein": 2
+    },
+    {
+      "name": "Edikang Ikong Soup",
+      "calories": 300,
+      "fat": 13,
+      "carbohydrate": 18,
+      "protein": 15
+    },
+    {
+      "name": "Ewa Agoyin",
+      "calories": 250,
+      "fat": 8,
+      "carbohydrate": 40,
+      "protein": 6
+    },
+    {
+      "name": "Okro Soup",
+      "calories": 120,
+      "fat": 4,
+      "carbohydrate": 8,
+      "protein": 10
+    },
+    {
+      "name": "Semovita",
+      "calories": 230,
+      "fat": 2,
+      "carbohydrate": 50,
+      "protein": 5
+    },
+    {
+      "name": "Chin Chin",
+      "calories": 180,
+      "fat": 8,
+      "carbohydrate": 25,
+      "protein": 4
+    },
+    {
+      "name": "Efo Egusi",
+      "calories": 270,
+      "fat": 12,
+      "carbohydrate": 15,
+      "protein": 9
+    },
+    {
+      "name": "Moi Moi",
+      "calories": 200,
+      "fat": 5,
+      "carbohydrate": 15,
+      "protein": 10
+    },
+    {
+      "name": "Coconut Rice",
+      "calories": 350,
+      "fat": 15,
+      "carbohydrate": 40,
+      "protein": 6
+    },
+    {
+      "name": "Semo and Egusi Soup",
+      "calories": 380,
+      "fat": 16,
+      "carbohydrate": 50,
+      "protein": 10
+    },
+    {
+      "name": "Banga Soup",
+      "calories": 300,
+      "fat": 13,
+      "carbohydrate": 10,
+      "protein": 18
+    },
+    {
+      "name": "Yam Porridge",
+      "calories": 280,
+      "fat": 10,
+      "carbohydrate": 45,
+      "protein": 6
+    },
+    {
+      "name": "Nkwobi",
+      "calories": 320,
+      "fat": 20,
+      "carbohydrate": 12,
+      "protein": 14
+    },
+    {
+      "name": "Abacha and Ugba",
+      "calories": 280,
+      "fat": 14,
+      "carbohydrate": 25,
+      "protein": 8
+    },
+    {
+      "name": "Ogbono Soup",
+      "calories": 240,
+      "fat": 11,
+      "carbohydrate": 15,
+      "protein": 10
+    },
+    {
+      "name": "Nkwobi",
+      "calories": 320,
+      "fat": 20,
+      "carbohydrate": 12,
+      "protein": 14
+    },
+    {
+      "name": "Dodo",
+      "calories": 200,
+      "fat": 10,
+      "carbohydrate": 25,
+      "protein": 2
+    },
+    {
+      "name": "Egusi Stew",
+      "calories": 260,
+      "fat": 12,
+      "carbohydrate": 8,
+      "protein": 15
+    },
+    {
+      "name": "Fried Rice",
+      "calories": 380,
+      "fat": 14,
+      "carbohydrate": 60,
+      "protein": 6
+    },
+    {
+      "name": "Fisherman Soup",
+      "calories": 320,
+      "fat": 16,
+      "carbohydrate": 12,
+      "protein": 20
+    },
+    {
+      "name": "Oha Soup",
+      "calories": 200,
+      "fat": 9,
+      "carbohydrate": 15,
+      "protein": 10
+    },
+    {
+      "name": "Gbegiri Soup",
+      "calories": 180,
+      "fat": 5,
+      "carbohydrate": 10,
+      "protein": 8
+    },
+    {
+      "name": "Ewa Oloyin",
+      "calories": 220,
+      "fat": 7,
+      "carbohydrate": 40,
+      "protein": 5
+    },
+    {
+      "name": "Ogiri Soup",
+      "calories": 280,
+      "fat": 12,
+      "carbohydrate": 20,
+      "protein": 15
+    },
+    {
+      "name": "Afia Efere",
+      "calories": 250,
+      "fat": 10,
+      "carbohydrate": 15,
+      "protein": 12
+    },
+    {
+      "name": "Bitterleaf Soup",
+      "calories": 180,
+      "fat": 8,
+      "carbohydrate": 10,
+      "protein": 10
+    },
+    {
+      "name": "Ukwa",
+      "calories": 300,
+      "fat": 10,
+      "carbohydrate": 40,
+      "protein": 8
+    },
+    {
+      "name": "Nkwobi",
+      "calories": 320,
+      "fat": 20,
+      "carbohydrate": 12,
+      "protein": 14
+    },
+    {
+      "name": "Egusi Owo Soup",
+      "calories": 280,
+      "fat": 14,
+      "carbohydrate": 18,
+      "protein": 10
+    },
+    {
+      "name": "Egusi Owo Soup",
+      "calories": 280,
+      "fat": 14,
+      "carbohydrate": 18,
+      "protein": 10
+    },
+    {
+      "name": "Banga Rice",
+      "calories": 380,
+      "fat": 16,
+      "carbohydrate": 55,
+      "protein": 10
+    },
+    {
+      "name": "Efo Elegusi",
+      "calories": 270,
+      "fat": 12,
+      "carbohydrate": 15,
+      "protein": 10
+    },
+    {
+      "name": "Coconut Candy",
+      "calories": 150,
+      "fat": 7,
+      "carbohydrate": 20,
+      "protein": 2
+    },
+    {
+      "name": "Egusi and Okro Soup",
+      "calories": 200,
+      "fat": 10,
+      "carbohydrate": 12,
+      "protein": 10
+    },
+    {
+      "name": "Pepper Soup",
+      "calories": 150,
+      "fat": 5,
+      "carbohydrate": 5,
+      "protein": 20
+    },
+    {
+      "name": "White Rice and Stew",
+      "calories": 400,
+      "fat": 15,
+      "carbohydrate": 70,
+      "protein": 5
+    },
+    {
+      "name": "Egusi Ijebu",
+      "calories": 260,
+      "fat": 12,
+      "carbohydrate": 10,
+      "protein": 8
+    },
+    {
+      "name": "Adalu",
+      "calories": 320,
+      "fat": 14,
+      "carbohydrate": 45,
+      "protein": 10
+    },
+    {
+      "name": "Ofada Sauce",
+      "calories": 280,
+      "fat": 12,
+      "carbohydrate": 15,
+      "protein": 8
+    },
+    {
+      "name": "Mango Rice",
+      "calories": 350,
+      "fat": 10,
+      "carbohydrate": 60,
+      "protein": 5
+    },
+    {
+      "name": "Ewedu Soup",
+      "calories": 100,
+      "fat": 3,
+      "carbohydrate": 5,
+      "protein": 7
+    },
+    {
+      "name": "Abula",
+      "calories": 300,
+      "fat": 15,
+      "carbohydrate": 40,
+      "protein": 12
+    },
+    {
+      "name": "Egusi Pepper Soup",
+      "calories": 180,
+      "fat": 8,
+      "carbohydrate": 5,
+      "protein": 15
+    },
+    {
+      "name": "Ugba",
+      "calories": 220,
+      "fat": 10,
+      "carbohydrate": 25,
+      "protein": 8
+    },
+    {
+      "name": "Afang Soup",
+      "calories": 200,
+      "fat": 10,
+      "carbohydrate": 12,
+      "protein": 10
+    },
+    {
+      "name": "Ewedu and Gbegiri Soup",
+      "calories": 150,
+      "fat": 5,
+      "carbohydrate": 8,
+      "protein": 6
+    },
+    {
+      "name": "Boli",
+      "calories": 200,
+      "fat": 5,
+      "carbohydrate": 45,
+      "protein": 3
+    },
+    {
+      "name": "Atama Soup",
+      "calories": 250,
+      "fat": 12,
+      "carbohydrate": 8,
+      "protein": 15
+    },
+    {
+      "name": "Groundnut Soup",
+      "calories": 280,
+      "fat": 14,
+      "carbohydrate": 10,
+      "protein": 12
+    },
+    {
+      "name": "Ewa Agonyin",
+      "calories": 250,
+      "fat": 8,
+      "carbohydrate": 40,
+      "protein": 6
+    },
+    {
+      "name": "Ikokore",
+      "calories": 300,
+      "fat": 10,
+      "carbohydrate": 55,
+      "protein": 8
+    },
+    {
+      "name": "Ofe Akwu",
+      "calories": 220,
+      "fat": 10,
+      "carbohydrate": 12,
+      "protein": 10
+    },
+    {
+      "name": "Ukwa",
+      "calories": 300,
+      "fat": 10,
+      "carbohydrate": 40,
+      "protein": 8
+    },
+    {
+      "name": "Egusi Owo Soup",
+      "calories": 280,
+      "fat": 14,
+      "carbohydrate": 18,
+      "protein": 10
+    },
+    {
+      "name": "Abak Atama Soup",
+      "calories": 250,
+      "fat": 12,
+      "carbohydrate": 8,
+      "protein": 15
+    },
+    {
+      "name": "Moi Moi",
+      "calories": 180,
+      "fat": 5,
+      "carbohydrate": 10,
+      "protein": 10
+    },
+    {
+      "name": "Ofe Nsala",
+      "calories": 200,
+      "fat": 8,
+      "carbohydrate": 5,
+      "protein": 12
+    },
+    {
+      "name": "Ewa Agoyin",
+      "calories": 250,
+      "fat": 8,
+      "carbohydrate": 40,
+      "protein": 6
+    },
+    {
+      "name": "Fried Plantain",
+      "calories": 180,
+      "fat": 1,
+      "carbohydrate": 48,
+      "protein": 2
+    },
+    {
+      "name": "Egusi Ijebu",
+      "calories": 260,
+      "fat": 12,
+      "carbohydrate": 10,
+      "protein": 8
+    },
+    {
+      "name": "Ofe Onugbu",
+      "calories": 220,
+      "fat": 10,
+      "carbohydrate": 12,
+      "protein": 10
+    },
+    {
+      "name": "Afang Soup",
+      "calories": 200,
+      "fat": 10,
+      "carbohydrate": 12,
+      "protein": 10
+    },
+    {
+      "name": "Egusi Soup",
+      "calories": 250,
+      "fat": 12,
+      "carbohydrate": 8,
+      "protein": 15
+    },
+    {
+      "name": "Oha Soup",
+      "calories": 200,
+      "fat": 9,
+      "carbohydrate": 15,
+      "protein": 10
+    },
+    {
+      "name": "Ewedu Soup",
+      "calories": 100,
+      "fat": 3,
+      "carbohydrate": 5,
+      "protein": 7
+    },
+    {
+      "name": "Abula",
+      "calories": 300,
+      "fat": 15,
+      "carbohydrate": 40,
+      "protein": 12
+    },
+    {
+      "name": "Egusi Pepper Soup",
+      "calories": 180,
+      "fat": 8,
+      "carbohydrate": 5,
+      "protein": 15
+    },
+    {
+      "name": "Ugba",
+      "calories": 220,
+      "fat": 10,
+      "carbohydrate": 25,
+      "protein": 8
+    },
+    {
+      "name": "Afang Soup",
+      "calories": 200,
+      "fat": 10,
+      "carbohydrate": 12,
+      "protein": 10
+    },
+    {
+      "name": "Ewedu and Gbegiri Soup",
+      "calories": 150,
+      "fat": 5,
+      "carbohydrate": 8,
+      "protein": 6
+    },
+    {
+      "name": "Boli",
+      "calories": 200,
+      "fat": 5,
+      "carbohydrate": 45,
+      "protein": 3
+    },
+    {
+      "name": "Atama Soup",
+      "calories": 250,
+      "fat": 12,
+      "carbohydrate": 8,
+      "protein": 15
+    },
+    {
+      "name": "Groundnut Soup",
+      "calories": 280,
+      "fat": 14,
+      "carbohydrate": 10,
+      "protein": 12
+    },
+    {
+      "name": "Ewa Agonyin",
+      "calories": 250,
+      "fat": 8,
+      "carbohydrate": 40,
+      "protein": 6
+    },
+    {
+      "name": "Ikokore",
+      "calories": 300,
+      "fat": 10,
+      "carbohydrate": 55,
+      "protein": 8
+    },
+    {
+      "name": "Ofe Akwu",
+      "calories": 220,
+      "fat": 10,
+      "carbohydrate": 12,
+      "protein": 10
+    }
+  ]
+}

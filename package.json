@@ -1,0 +1,31 @@
+{
+  "name": "9ja_food_tracker",
+  "version": "1.0.0",
+  "description": "Nigeria Food Tracker",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/GodblessMe2/9ja_food_tracker.git"
+  },
+  "author": "AlptemTech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GodblessMe2/9ja_food_tracker/issues"
+  },
+  "homepage": "https://github.com/GodblessMe2/9ja_food_tracker#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookies-parser": "^1.2.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.2.1",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.2",
+    "slugify": "^1.6.6",
+    "validator": "^13.9.0"
+  }
+}
