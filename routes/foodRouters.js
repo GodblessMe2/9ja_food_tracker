@@ -6,6 +6,6 @@ const authController = require('../controllers/authControllers')
 const router = express.Router();
 
 router.get('/', authController.protect, foodController.getAllFoods);
-router.get('/:name', foodController.getSingleFood);
+router.get('/:name', authController.protect, foodController.getSingleFood);
 
 module.exports = router;
