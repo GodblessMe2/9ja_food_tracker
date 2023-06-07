@@ -70,6 +70,8 @@ exports.protect = catchAsync(async (req, res, next) => {
   // 1. Getting token and check if it is there
   if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     token = req.headers.authorization.split(' ')[1]
+  } else if(req.cookies.jwt) {
+    token = req.cookies.jwt;
   }
   // If the token is not on the header or cookies return to login
   if(!token) {
@@ -92,6 +94,28 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   next();
 });
+
+exports.isLoggedIn = async (req, res, next) => {
+  if(req.cookies.jwt) {
+    try {
+      const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+    
+      // 3. Check if user still exits
+      const currentUser = await User.findById(decoded.id);
+    
+      if(!currentUser) {
+        return next();
+      }
+
+      // There is a logged in user
+      res.locals.user = currentUser;
+      return next()
+    } catch (err) {
+      return next()
+    }
+  }
+  next();
+};
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   const inputEmail = req.body.email;

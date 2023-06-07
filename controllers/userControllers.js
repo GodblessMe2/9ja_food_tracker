@@ -4,7 +4,6 @@ const AppError = require('../utils/appError');
 
 
 exports.getMe = (req, res, next) => {
-  // console.log(req.user.id);
   req.params.id = req.user.id;
 
   next();
