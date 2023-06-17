@@ -91,7 +91,32 @@ export const register = async (name, email, password) => {
     }
 
   } catch (err) {
-    console.log(err);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    Toast.fire({
+      icon: 'error',
+      title: err.response.data.message,
+    })
+  }
+}
+
+export const logout = async () => {
+  try {
+    const res = await axios({
+      method: 'GET',
+      url: 'http://127.0.0.1:5000/api/v1/users/logout'
+    })
+    if(res.data.status = 'success') location.assign('/index');
+  } catch (err) {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',

@@ -1,0 +1,92 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    // Compiled and minified CSS
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+    link(rel="stylesheet", href="/css/chart.css")
+    title 9ja Food Tracker😋 - #{title}
+  body
+    nav
+      .nav-wrapper.deep-orange
+        .container
+          a.brand-logo.center(href="#") 9ja Food Tracker
+          ul.right
+            li
+              a.clear-btn.btn.orange.lighten-1(href="#") Clear All
+            li
+              a#logout.clear-btn.btn.grey.darken-3(href="") Log Out
+              
+    br
+    .container
+      // Form Card
+      .card
+        .card-content
+          span.card-title.center Add Your Today Meal 😋🥰
+          form#foodForm.col
+            .row
+              .input-field.col.s12
+                input#item-name(type="text", placeholder="Search for food...." required)
+                label(for="item-name") Meals
+              //- .input-field.col.s6
+              //-   input#item-calories(type="number", placeholder="Add Calories")
+              //-   label(for="item-calories") Calories
+              button.add-btn.btn.blue.darken-3
+                i.fa.fa-plus 
+                |  Add Meal
+              button.update-btn.btn.orange.disabled
+                i.fa.fa-pencil-square-o
+                |  Update Meal
+              button.delete-btn.btn.red.disabled
+                i.fa.fa-remove
+                |  Delete Meal
+              button.back-btn.btn.grey.pull-right.disabled
+                i.fa.fa-chevron-circle-left
+                |  Back
+      // Calorie Count
+      h3.center-align Total Pie Chart:
+      div.chart-container
+        canvas#myChart
+      // - Item List
+      
+      table#item-list.collection.striped
+        thead
+          tr
+            th Meals
+            th Calories
+            th Fat
+            th Carbohydrate
+            th Protein
+            th Edit
+        tbody
+          tr
+            td Moi Moi
+            td 200
+            td 5
+            td 15
+            td 10
+            td.edit-item.fa.fa-pencil-square-o
+          tr
+            td Rice
+            td 150
+            td 15
+            td 15
+            td 10
+            td.edit-item.fa.fa-pencil-square-o
+          tr
+            td Yam and egg
+            td 250
+            td 30
+            td 15
+            td 10
+            td.edit-item.fa.fa-pencil-square-o
+    br
+    script(src="https://cdn.jsdelivr.net/npm/chart.js")
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js", integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=", crossorigin="anonymous")
+    // Compiled and minified JavaScript
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
+    script(src="/js/chart.js")
+    script(src="/js/bundle.js") 

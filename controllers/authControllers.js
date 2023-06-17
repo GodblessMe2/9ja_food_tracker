@@ -144,7 +144,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     res
       .status(200)
       .json({
-        status: 'Success',
+        status: 'success',
         message: 'Token has been sent to your email'
       })
   } catch (err) {
@@ -157,6 +157,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 });
 
 exports.resetPassword = catchAsync( async(req, res, next) => {
+  console.log(req.params.token);
   // 1. Get user based on the token been sent and check if it this the right token
   const hashedToken = crypto
   .createHash('sha256')
@@ -187,13 +188,13 @@ exports.resetPassword = catchAsync( async(req, res, next) => {
 exports.logout = catchAsync( async(req, res, next) => {
   
   res.cookie('jwt', 'LoggedOut', {
-    expires: new Date(Date.now() + 10 * 1000),
+    expires: new Date(Date.now() + 3 * 1000),
     httpOnly: true
   });
 
   res
     .status(200)
     .json({
-      status: 'Success'
+      status: 'success'
     })
 })

@@ -8,7 +8,7 @@ exports.getAllFoods = catchAsync( async (req, res, next) => {
   res
     .status(200)
     .json({
-      status: 'Success',
+      status: 'success',
       requestedAt: req.requestTime,
       count: foods.length,
       data: {
@@ -23,7 +23,7 @@ exports.getSingleFood = catchAsync( async (req, res, next) => {
   res
     .status(200)
     .json({
-      status: 'Success',
+      status: 'success',
       requestedAt: req.requestTime,
       data: {
         foodItem: food
