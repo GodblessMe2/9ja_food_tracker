@@ -2,7 +2,9 @@ import '@babel/polyfill';
 import axios from "axios";
 import Swal from 'sweetalert2';
 import { login, register, logout } from './login';
+import { UI, StorageCtrl, itemCtrl } from './app';
 import { getFoodName } from './food';
+import { chartResult } from './chart';
 
 // Dom Element
 const signInForm = document.getElementById('signInForm');
@@ -84,10 +86,106 @@ if(logOut) {
   logOut.addEventListener('click', logout);
 }
 
-// if(searchForm) {
-//   searchForm.addEventListener('click', e => {
-//     e.preventDefault();
-//     // const searchInput = document.getElementById('item-name').value;
-//     console.log('hello');
-//   })
-// }
+const AppCtrl = (() => {
+  const loadEventListeners = () => {
+    const UISelectors = UI.getSelectors();
+
+    if(UISelectors.deleteBtn) {
+      document.querySelector(UISelectors.itemList).addEventListener('click', DeleteItemMeal);
+    }
+
+    document.querySelector(UISelectors.addBtn).addEventListener('click', AddMealSubmit);
+
+    // Clear items event
+    document.querySelector(UISelectors.clearBtn).addEventListener('click', clearAllItemsClick);
+    
+  }
+
+  // Add Meal submit function
+  const AddMealSubmit = async (e) => {
+    const input = UI.getItemInput();
+    e.preventDefault();
+    try {
+      if (input.name !== '') {
+        const foodItems = await getFoodName(input.name);
+        const newItem = itemCtrl.addItem(foodItems.name, foodItems.calories, foodItems.fat, foodItems.carbohydrate, foodItems.protein)
+
+        UI.addListMeal(newItem);
+
+        itemCtrl.setCurrentItem(newItem);
+
+        // Get the total Nutrition
+        const getTotalNutrient = itemCtrl.getTotalNutrients();
+        console.log(getTotalNutrient);
+        // await chartResult(getTotalNutrient);
+
+        // Store In LS
+        StorageCtrl.storeItem(newItem);
+        // Clear Field
+        UI.clearInput();
+      }
+    } catch (err) {
+      console.error(err);
+      UI.clearInput();
+    }
+    
+  }
+
+  const DeleteItemMeal = (e) => {
+    if(e.target.classList.contains('delete-btn')) {
+      let listId = e.target.parentNode.id;
+      
+      // Break into an array
+      const listIdArr = listId.split('-');
+
+      // Get the actual id
+      const id = parseInt(listIdArr[1]);
+      const itemId = itemCtrl.getItemById(id)
+
+      itemCtrl.setCurrentItem(itemId);
+
+      const currentItem = itemCtrl.getCurrentItem();
+      
+      // Delete from data structure
+      itemCtrl.deleteItem(currentItem.id);
+
+      // Delete from the UI
+      UI.deleteListItem(currentItem.id);
+
+      const getTotalNutrient = itemCtrl.getTotalNutrients();
+      console.log(getTotalNutrient);
+      
+      // Delete from local storage
+      StorageCtrl.deleteItemFromStorage(currentItem.id);
+    }
+
+    e.preventDefault();
+  }
+
+  const clearAllItemsClick = (e) => {
+    itemCtrl.clearAllItems();
+
+    // Get Total Nutrient
+    const getTotalNutrient = itemCtrl.getTotalNutrients();
+    console.log(getTotalNutrient);
+
+    // Remove from UI
+    UI.removeItems();
+
+    // Clear all from local storage
+    StorageCtrl.clearItemsFromStorage();
+    e.preventDefault();
+  }
+
+  return {
+    init: function () {
+      const item = itemCtrl.getItems();
+  
+      UI.populateItemList(item);
+      // Load event listener call
+      loadEventListeners();
+    }
+  }
+})()
+
+AppCtrl.init();

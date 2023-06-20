@@ -37,56 +37,55 @@ html(lang="en")
               button.add-btn.btn.blue.darken-3
                 i.fa.fa-plus 
                 |  Add Meal
-              button.update-btn.btn.orange.disabled
-                i.fa.fa-pencil-square-o
-                |  Update Meal
-              button.delete-btn.btn.red.disabled
-                i.fa.fa-remove
-                |  Delete Meal
-              button.back-btn.btn.grey.pull-right.disabled
-                i.fa.fa-chevron-circle-left
-                |  Back
+              //- button.update-btn.btn.orange.disabled
+              //-   i.fa.fa-pencil-square-o
+              //-   |  Update Meal
+              //- button.delete-btn.btn.red.disabled
+              //-   i.fa.fa-remove
+              //-   |  Delete Meal
+              //- button.back-btn.btn.grey.pull-right.disabled
+              //-   i.fa.fa-chevron-circle-left
+              //-   |  Back
       // Calorie Count
-      h3.center-align Total Pie Chart:
-      div.chart-container
+      h3.center-align Total Meal Counts:
+      div.total-count.chart-container
         canvas#myChart
       // - Item List
-      
-      table#item-list.collection.striped
+      table.collection.striped
         thead
           tr
             th Meals
             th Calories
             th Fat
-            th Carbohydrate
+            th Carbohydrates
             th Protein
-            th Edit
-        tbody
-          tr
-            td Moi Moi
-            td 200
-            td 5
-            td 15
-            td 10
-            td.edit-item.fa.fa-pencil-square-o
-          tr
-            td Rice
-            td 150
-            td 15
-            td 15
-            td 10
-            td.edit-item.fa.fa-pencil-square-o
-          tr
-            td Yam and egg
-            td 250
-            td 30
-            td 15
-            td 10
-            td.edit-item.fa.fa-pencil-square-o
+            th Delete
+        tbody#item-list
+          //- tr
+          //-   td Moi Moi
+          //-   td 200
+          //-   td 5
+          //-   td 15
+          //-   td 10
+          //-   td.edit-item.fa.fa-pencil-square-o
+          //- tr
+          //-   td Rice
+          //-   td 150
+          //-   td 15
+          //-   td 15
+          //-   td 10
+          //-   td.edit-item.fa.fa-pencil-square-o
+          //- tr
+          //-   td Yam and egg
+          //-   td 250
+          //-   td 30
+          //-   td 15
+          //-   td 10
+          //-   td.edit-item.fa.fa-pencil-square-o
     br
     script(src="https://cdn.jsdelivr.net/npm/chart.js")
     script(src="https://code.jquery.com/jquery-3.6.0.min.js", integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=", crossorigin="anonymous")
     // Compiled and minified JavaScript
     script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
-    script(src="/js/chart.js")
+    //- script(src="/js/chart.js")
     script(src="/js/bundle.js") 

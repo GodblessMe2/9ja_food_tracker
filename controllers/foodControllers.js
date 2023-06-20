@@ -20,6 +20,9 @@ exports.getAllFoods = catchAsync( async (req, res, next) => {
 exports.getSingleFood = catchAsync( async (req, res, next) => {
   const name = req.params.name;
   const food = await Food.findOne({ name });
+  if(food === null) {
+    return next(new AppError('Meal Type is not correct, Please try again', 404));
+  }
   res
     .status(200)
     .json({
