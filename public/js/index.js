@@ -5,15 +5,13 @@ import { login, register, logout } from './login';
 import { UI, StorageCtrl, itemCtrl } from './app';
 import { resetPassword } from './resetPassword';
 import { getFoodName } from './food';
-import { chartResult } from './chart';
 
 // Dom Element
 const signInForm = document.getElementById('signInForm');
 const RegisterForm = document.getElementById('signUpForm');
 const forgetPassword = document.getElementById('forgetPassword');
 const logOut = document.getElementById('logout');
-const changePassword = document.getElementById('changePassword')
-const searchForm = document.getElementById('foodForm');
+const changePassword = document.getElementById('changePassword');
 
 
 if(signInForm) {
