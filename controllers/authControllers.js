@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
-const { log } = require('console');
 const AppError = require('../utils/appError');
 const sendEmail = require('../utils/email');
 
@@ -40,7 +39,6 @@ const signToken = id => {
 }
 
 exports.signup = catchAsync(async (req, res, next) => {
-  console.log(req.body);
   const newUser = await User.create(req.body);
   
   createSendToken(newUser, 201, res)
@@ -130,7 +128,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
 
   // send it to the user's email address
-  const resetURL = `${req.protocol}://${req.get('host')}/api/v1/users/resetPassword/${resetToken}`;
+  const resetURL = `${req.protocol}://${req.get('host')}/passwordReset/${resetToken}`;
 
   const message = `Forgot your password? Submit a new password: ${resetURL}.\nIf you didn't forget your password, Please ignore this email!`;
 
@@ -157,7 +155,6 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 });
 
 exports.resetPassword = catchAsync( async(req, res, next) => {
-  console.log(req.params.token);
   // 1. Get user based on the token been sent and check if it this the right token
   const hashedToken = crypto
   .createHash('sha256')
@@ -168,7 +165,6 @@ exports.resetPassword = catchAsync( async(req, res, next) => {
     passwordResetToken: hashedToken,
     passwordResetExpires: { $gt: Date.now() }
   });
-  console.log(user);
   // 2. if token has expired or not valid, and the user is not valid, set new password
   if(!user) {
     return next(new AppError('Token is invalid or has expired', 400));

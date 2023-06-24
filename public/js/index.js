@@ -3,6 +3,7 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 import { login, register, logout } from './login';
 import { UI, StorageCtrl, itemCtrl } from './app';
+import { resetPassword } from './resetPassword';
 import { getFoodName } from './food';
 import { chartResult } from './chart';
 
@@ -11,6 +12,7 @@ const signInForm = document.getElementById('signInForm');
 const RegisterForm = document.getElementById('signUpForm');
 const forgetPassword = document.getElementById('forgetPassword');
 const logOut = document.getElementById('logout');
+const changePassword = document.getElementById('changePassword')
 const searchForm = document.getElementById('foodForm');
 
 
@@ -19,7 +21,6 @@ if(signInForm) {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    // console.log(email, password);
     login(email, password);
 
     document.getElementById('email').value = '';
@@ -60,7 +61,7 @@ if(forgetPassword) {
               }
             })
             .then(result => {
-              if (result.data.status === 'Success') {
+              if (result.data.status === 'success') {
                 Swal.fire({
                   icon: 'success',
                   title: result.data.message
@@ -71,7 +72,7 @@ if(forgetPassword) {
             .catch(error => {
               Swal.showValidationMessage(
                 `Request failed: ${error.response.data.message}`
-              )
+              );
               reject();
             })
           }
@@ -81,6 +82,18 @@ if(forgetPassword) {
     })
   })
 }
+
+if(changePassword) {
+  changePassword.addEventListener('submit', e => {
+    e.preventDefault();
+    const token = document.getElementById('token').value;
+    const password = document.getElementById('password').value;
+    resetPassword(token, password);
+
+    document.getElementById('password').value = '';
+  })
+}
+
 
 if(logOut) {
   logOut.addEventListener('click', logout);
@@ -104,10 +117,17 @@ const AppCtrl = (() => {
   // Add Meal submit function
   const AddMealSubmit = async (e) => {
     const input = UI.getItemInput();
+
     e.preventDefault();
     try {
       if (input.name !== '') {
-        const foodItems = await getFoodName(input.name);
+        const arr = input.name.split(" ");
+        for (let i = 0; i < arr.length; i++) {
+          arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+        }
+        const inputRes = arr.join(" ");
+
+        const foodItems = await getFoodName(inputRes);
         const newItem = itemCtrl.addItem(foodItems.name, foodItems.calories, foodItems.fat, foodItems.carbohydrate, foodItems.protein)
 
         UI.addListMeal(newItem);
@@ -116,8 +136,9 @@ const AppCtrl = (() => {
 
         // Get the total Nutrition
         const getTotalNutrient = itemCtrl.getTotalNutrients();
-        console.log(getTotalNutrient);
-        // await chartResult(getTotalNutrient);
+
+        UI.showTotalNutrient(getTotalNutrient);
+  
 
         // Store In LS
         StorageCtrl.storeItem(newItem);
@@ -153,7 +174,9 @@ const AppCtrl = (() => {
       UI.deleteListItem(currentItem.id);
 
       const getTotalNutrient = itemCtrl.getTotalNutrients();
-      console.log(getTotalNutrient);
+      
+      UI.showTotalNutrient(getTotalNutrient);
+
       
       // Delete from local storage
       StorageCtrl.deleteItemFromStorage(currentItem.id);
@@ -167,7 +190,8 @@ const AppCtrl = (() => {
 
     // Get Total Nutrient
     const getTotalNutrient = itemCtrl.getTotalNutrients();
-    console.log(getTotalNutrient);
+    
+    UI.showTotalNutrient(getTotalNutrient);
 
     // Remove from UI
     UI.removeItems();
@@ -180,8 +204,12 @@ const AppCtrl = (() => {
   return {
     init: function () {
       const item = itemCtrl.getItems();
-  
+
       UI.populateItemList(item);
+
+      const getTotalNutrient = itemCtrl.getTotalNutrients();
+      
+      UI.showTotalNutrient(getTotalNutrient);
       // Load event listener call
       loadEventListeners();
     }
@@ -189,3 +217,5 @@ const AppCtrl = (() => {
 })()
 
 AppCtrl.init();
+
+

@@ -16,7 +16,7 @@ export const login = async (email, password) => {
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2000,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -27,20 +27,21 @@ export const login = async (email, password) => {
       Toast.fire({
         icon: res.data.status,
         title: 'Signed in successfully'
-      })
+      });
+      const userId = res.data.data.user._id;
+      localStorage.setItem('userID', JSON.stringify(userId));
       window.setTimeout(() =>{
-        location.assign('/')
-      }, 4000);
+        location.assign('/dashboard')
+      }, 3000);
 
     }
 
   } catch (err) {
-    console.log(err);
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
-      timer: 3000,
+      timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -72,7 +73,7 @@ export const register = async (name, email, password) => {
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2000,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -83,10 +84,12 @@ export const register = async (name, email, password) => {
       Toast.fire({
         icon: res.data.status,
         title: 'Signed in successfully'
-      })
+      });
+      const userId = res.data.data.user._id;
+      localStorage.setItem('userID', JSON.stringify(userId));
       window.setTimeout(() =>{
-        location.assign('/')
-      }, 4000);
+        location.assign('/dashboard')
+      }, 3000);
 
     }
 
@@ -95,7 +98,7 @@ export const register = async (name, email, password) => {
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
-      timer: 3000,
+      timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -115,13 +118,13 @@ export const logout = async () => {
       method: 'GET',
       url: 'http://127.0.0.1:5000/api/v1/users/logout'
     })
-    if(res.data.status = 'success') location.assign('/index');
+    if(res.data.status = 'success') location.assign('/');
   } catch (err) {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
-      timer: 3000,
+      timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)

@@ -2,49 +2,55 @@ export const StorageCtrl = (() => {
   // Public Methods
   return{
     storeItem: (item) =>{
+      // User ID and add it to items
+      const userID = JSON.parse(localStorage.getItem('userID'));
+
       let items;
+
       // Check if any items in ls
-      if(localStorage.getItem('items') === null){
+      if(localStorage.getItem('items'+userID) === null){
         items = [];
         // Push new item
         items.push(item);
         // Set ls
-        localStorage.setItem('items', JSON.stringify(items));
+        localStorage.setItem('items'+userID, JSON.stringify(items));
       } else {
         // Get what is already in ls
-        items = JSON.parse(localStorage.getItem('items'));
+        items = JSON.parse(localStorage.getItem('items'+userID));
 
         // Push new item
         items.push(item);
 
         // Re set ls
-        localStorage.setItem('items', JSON.stringify(items));
+        localStorage.setItem('items'+userID, JSON.stringify(items));
       }
     },
 
    getItemsFromStorage: () => {
+    const userID = JSON.parse(localStorage.getItem('userID'));
     let items
-    if(localStorage.getItem('items') === null) {
+    if(localStorage.getItem('items'+userID) === null) {
       items = [];
     } else {
-      items = JSON.parse(localStorage.getItem('items'));
+      items = JSON.parse(localStorage.getItem('items'+userID));
     }
     return items;
    },
 
    deleteItemFromStorage: id => {
-    let items = JSON.parse(localStorage.getItem('items'));
-    console.log(items);
+    const userID = JSON.parse(localStorage.getItem('userID'));
+    let items = JSON.parse(localStorage.getItem('items'+userID));
       items.forEach(function(item, index){
         if(id === item.id){
           items.splice(index, 1);
         }
       });
-      localStorage.setItem('items', JSON.stringify(items));
+      localStorage.setItem('items'+userID, JSON.stringify(items));
    },
 
    clearItemsFromStorage: () => {
-    localStorage.removeItem('items');
+    const userID = JSON.parse(localStorage.getItem('userID'));
+    localStorage.removeItem('items'+userID);
    }
   }
 })();
@@ -60,6 +66,7 @@ export const UI = (() => {
     totalCount: '.total-count',
     itemList: '#item-list',
     listItems: '#item-list tr',
+    user_id: 'select#user_id',
   }
 
   return {
@@ -82,7 +89,7 @@ export const UI = (() => {
 
     getItemInput: () => {
       return {
-        name: document.querySelector(UISelectors.itemNameInput).value
+        name: document.querySelector(UISelectors.itemNameInput).value,
       }
     },
 
@@ -98,6 +105,17 @@ export const UI = (() => {
       <td class="delete-btn fa fa-trash"></td>`
 
       document.querySelector(UISelectors.itemList).insertAdjacentElement('Afterbegin', tableRow);
+    },
+
+    showTotalNutrient: (getTotalNutrient) => {
+      let html = '';
+      html += `
+        <li class="btn blue darken-1">Calories: ${getTotalNutrient[0]}</li>
+        <li class="btn waves-effect waves-light">Fat: ${getTotalNutrient[1]}</li>
+        <li class="btn amber accent-4">Carbohydrates: ${getTotalNutrient[2]}</li>
+        <li class="btn deep-orange accent-4">Protein: ${getTotalNutrient[3]}</li>
+      `
+      document.querySelector(UISelectors.totalCount).innerHTML = html;
     },
 
     deleteListItem: id => {
@@ -147,10 +165,6 @@ export const itemCtrl = (function () {
   }
 
   const data = {
-    // items : [
-      // {name: 'Moi Moi', calories: 1200, fat: 30, carbohydrates: 20, protein: 100},
-      // {name: 'Akara', calories: 1000, fat: 20, carbohydrates: 30, protein: 70}
-    // ],
     items: StorageCtrl.getItemsFromStorage(),
     currentItem: null,
     totalCalories: 0,

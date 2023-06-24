@@ -9,17 +9,21 @@ html(lang="en")
     link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
     link(rel="stylesheet", href="/css/chart.css")
     title 9ja Food Tracker😋 - #{title}
+  style.
+    .btn {
+      margin: 10px;
+    }
   body
     nav
       .nav-wrapper.deep-orange
         .container
           a.brand-logo.center(href="#") 9ja Food Tracker
-          ul.right
+          ul.left
             li
               a.clear-btn.btn.orange.lighten-1(href="#") Clear All
+          ul.right
             li
               a#logout.clear-btn.btn.grey.darken-3(href="") Log Out
-              
     br
     .container
       // Form Card
@@ -31,25 +35,13 @@ html(lang="en")
               .input-field.col.s12
                 input#item-name(type="text", placeholder="Search for food...." required)
                 label(for="item-name") Meals
-              //- .input-field.col.s6
-              //-   input#item-calories(type="number", placeholder="Add Calories")
-              //-   label(for="item-calories") Calories
               button.add-btn.btn.blue.darken-3
                 i.fa.fa-plus 
                 |  Add Meal
-              //- button.update-btn.btn.orange.disabled
-              //-   i.fa.fa-pencil-square-o
-              //-   |  Update Meal
-              //- button.delete-btn.btn.red.disabled
-              //-   i.fa.fa-remove
-              //-   |  Delete Meal
-              //- button.back-btn.btn.grey.pull-right.disabled
-              //-   i.fa.fa-chevron-circle-left
-              //-   |  Back
       // Calorie Count
-      h3.center-align Total Meal Counts:
-      div.total-count.chart-container
-        canvas#myChart
+      h4.center-align Total Nutrition Counts:
+      ul.total-count.center   
+    
       // - Item List
       table.collection.striped
         thead
@@ -61,31 +53,9 @@ html(lang="en")
             th Protein
             th Delete
         tbody#item-list
-          //- tr
-          //-   td Moi Moi
-          //-   td 200
-          //-   td 5
-          //-   td 15
-          //-   td 10
-          //-   td.edit-item.fa.fa-pencil-square-o
-          //- tr
-          //-   td Rice
-          //-   td 150
-          //-   td 15
-          //-   td 15
-          //-   td 10
-          //-   td.edit-item.fa.fa-pencil-square-o
-          //- tr
-          //-   td Yam and egg
-          //-   td 250
-          //-   td 30
-          //-   td 15
-          //-   td 10
-          //-   td.edit-item.fa.fa-pencil-square-o
     br
-    script(src="https://cdn.jsdelivr.net/npm/chart.js")
+    //- script(src="https://cdn.jsdelivr.net/npm/chart.js")
     script(src="https://code.jquery.com/jquery-3.6.0.min.js", integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=", crossorigin="anonymous")
     // Compiled and minified JavaScript
     script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
-    //- script(src="/js/chart.js")
-    script(src="/js/bundle.js") 
+    script(src="/js/bundle.js")

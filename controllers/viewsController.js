@@ -1,5 +1,6 @@
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
+const User = require('../models/userModel')
 
 
 exports.getLogInOutForm = (req, res) => {
@@ -18,10 +19,13 @@ exports.displayDashboard = (req, res) => {
     })
 }
 
-exports.passwordReset = (req, res) => {
+exports.passwordReset = async (req, res) => {
+  const token = req.params.token;
+  
   res
     .status(200)
     .render('passwordReset', {
-      title: 'Password Reset'
+      title: 'Password Reset',
+      token
     })
 }
