@@ -28,7 +28,7 @@ export const resetPassword = async (token, password) => {
         title: 'Signed in successfully'
       })
       window.setTimeout(() =>{
-        location.assign('/')
+        location.assign('/dashboard')
       }, 3000);
 
     }
