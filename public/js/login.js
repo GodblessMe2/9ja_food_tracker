@@ -1,15 +1,15 @@
-import axios from "axios";
-import Swal from 'sweetalert2'
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export const login = async (email, password) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:5000/api/v1/users/login',
+      url: '/api/v1/users/login',
       data: {
         email,
-        password
-      }
+        password,
+      },
     });
     if (res.data.status === 'success') {
       const Toast = Swal.mixin({
@@ -19,23 +19,21 @@ export const login = async (email, password) => {
         timer: 2000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-      
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+      });
+
       Toast.fire({
         icon: res.data.status,
-        title: 'Signed in successfully'
+        title: 'Signed in successfully',
       });
       const userId = res.data.data.user._id;
       localStorage.setItem('userID', JSON.stringify(userId));
-      window.setTimeout(() =>{
-        location.assign('/dashboard')
+      window.setTimeout(() => {
+        location.assign('/dashboard');
       }, 3000);
-
     }
-
   } catch (err) {
     const Toast = Swal.mixin({
       toast: true,
@@ -44,29 +42,28 @@ export const login = async (email, password) => {
       timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-    
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
+
     Toast.fire({
       icon: 'error',
       title: err.response.data.message,
-    })
+    });
   }
-}
-
+};
 
 export const register = async (name, email, password) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:5000/api/v1/users/signup',
+      url: '/api/v1/users/signup',
       data: {
         name,
         email,
-        password
-      }
+        password,
+      },
     });
     if (res.data.status === 'success') {
       const Toast = Swal.mixin({
@@ -76,23 +73,21 @@ export const register = async (name, email, password) => {
         timer: 2000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-      
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+      });
+
       Toast.fire({
         icon: res.data.status,
-        title: 'Signed in successfully'
+        title: 'Signed in successfully',
       });
       const userId = res.data.data.user._id;
       localStorage.setItem('userID', JSON.stringify(userId));
-      window.setTimeout(() =>{
-        location.assign('/dashboard')
+      window.setTimeout(() => {
+        location.assign('/dashboard');
       }, 3000);
-
     }
-
   } catch (err) {
     const Toast = Swal.mixin({
       toast: true,
@@ -101,24 +96,24 @@ export const register = async (name, email, password) => {
       timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
     Toast.fire({
       icon: 'error',
       title: err.response.data.message,
-    })
+    });
   }
-}
+};
 
 export const logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://127.0.0.1:5000/api/v1/users/logout'
-    })
-    if(res.data.status = 'success') location.assign('/');
+      url: '/api/v1/users/logout',
+    });
+    if ((res.data.status = 'success')) location.assign('/');
   } catch (err) {
     const Toast = Swal.mixin({
       toast: true,
@@ -127,13 +122,13 @@ export const logout = async () => {
       timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
     Toast.fire({
       icon: 'error',
       title: err.response.data.message,
-    })
+    });
   }
-}
+};

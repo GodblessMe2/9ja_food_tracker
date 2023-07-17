@@ -1,14 +1,14 @@
-import axios from "axios";
-import Swal from 'sweetalert2'
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export const resetPassword = async (token, password) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: `http://127.0.0.1:5000/api/v1/users/resetPassword/${token}`,
+      url: `/api/v1/users/resetPassword/${token}`,
       data: {
-        password
-      }
+        password,
+      },
     });
     if (res.data.status === 'success') {
       const Toast = Swal.mixin({
@@ -18,21 +18,19 @@ export const resetPassword = async (token, password) => {
         timer: 2000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-      
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+      });
+
       Toast.fire({
         icon: res.data.status,
-        title: 'Signed in successfully'
-      })
-      window.setTimeout(() =>{
-        location.assign('/dashboard')
+        title: 'Signed in successfully',
+      });
+      window.setTimeout(() => {
+        location.assign('/dashboard');
       }, 3000);
-
     }
-
   } catch (err) {
     const Toast = Swal.mixin({
       toast: true,
@@ -41,14 +39,14 @@ export const resetPassword = async (token, password) => {
       timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-    
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
+
     Toast.fire({
       icon: 'error',
       title: err.response.data.message,
-    })
+    });
   }
-}
+};
